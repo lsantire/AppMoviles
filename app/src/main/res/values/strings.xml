@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Banco Online</string>
+    <string name="mail">Correo electronico</string>
+    <string name="cuit">CUIT</string>
+    <string name="moneda">Moneda</string>
+    <string name="dolar">US$</string>
+    <string name="pesoArg">AR$</string>
+    <string name="montoInvertir">Monto a invertir</string>
+    <string name="dias">Dias</string>
+    <string name="avisarVencimiento">Avisar por mail antes del vencimiento</string>
+    <string name="textoBoton">HACER PLAZO FIJO</string>
+    <string name="textoCheckBox">Aceptar terminos y condiciones</string>
+    <string name="acreditar">ACREDITAR EN CUENTA</string>
+    <string name="renovar">RENOVAR AUTOMATICAMENTE</string>
+</resources>
