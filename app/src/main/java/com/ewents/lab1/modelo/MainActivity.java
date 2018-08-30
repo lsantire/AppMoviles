@@ -3,13 +3,18 @@ package com.ewents.lab1.modelo;
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.ewents.lab1.R;
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Switch swAvisarVencimiento;
     private RadioButton optDolar, optPeso;
     private CheckBox chkAceptoTerminos;
+    private Toast toastTerminosCondiciones,toastBtnHacerPF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,27 +58,82 @@ public class MainActivity extends AppCompatActivity {
         optPeso = (RadioButton) findViewById(R.id.optPeso);
         chkAceptoTerminos = (CheckBox) findViewById(R.id.chkAceptoTerminos);
         btnHacerPF.setEnabled(false);
+
+        seekDias.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int cantDias, boolean b) {
+                cantDias+=10;
+                tvDiasSeleccionados.setText(String.valueOf(cantDias) + getResources().getString(R.string.diasPF));
+                pf.setDias(cantDias);
+                tvIntereses.setText(String.format("$%.2f", pf.intereses()));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // no hacer nada
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // no hacer nada
+            }
+
+        });
+
+        editMonto.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // no hacer nada
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // no hacer nada
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                pf.setMonto(Double.valueOf(s.toString()));
+                tvDiasSeleccionados.setText(String.valueOf(pf.getDias()) + getResources().getString(R.string.diasPF));
+                tvIntereses.setText(String.format("$%.2f", pf.intereses()));
+            }
+        });
+
+        chkAceptoTerminos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                btnHacerPF.setEnabled(isChecked);
+                if (!isChecked) {
+                    toastTerminosCondiciones = Toast.makeText(getApplicationContext(), getResources().getString(R.string.toastTerminosCondiciones), Toast.LENGTH_SHORT);
+                    toastTerminosCondiciones.show();
+                }
+            }
+        });
+
+        btnHacerPF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String errores = "";
+                if(editMail.getText().toString().isEmpty()) errores+=getResources().getString(R.string.mailIncompleto);
+                if(editCuit.getText().toString().isEmpty()) errores+=getResources().getString(R.string.cuitIncompleto);
+                if(editMonto.getText().toString().isEmpty() || Integer.valueOf(editMonto.getText().toString())<=0)
+                    errores+=getResources().getString(R.string.montoIncorrecto);
+                if(errores.isEmpty())
+                {
+                    toastBtnHacerPF.getView().setBackgroundColor(getResources().getColor(R.color.colorCorrecto,getTheme()));
+                    toastBtnHacerPF = Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastPFValido),Toast.LENGTH_SHORT);
+                    tvMensaje.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                    tvMensaje.setText(pf.toString());
+                }
+                else
+                {
+                    toastBtnHacerPF.getView().setBackgroundColor(getResources().getColor(R.color.colorIncorrecto,getTheme()));
+                    toastBtnHacerPF = Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastPFInvalido),Toast.LENGTH_SHORT);
+                    tvMensaje.setTextColor(getResources().getColor(R.color.colorIncorrecto));
+                    tvMensaje.setText(errores);
+                }
+                toastBtnHacerPF.show();
+            }
+        });
     }
-
-    this.seekDias.OnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
-
-    {
-        @Override
-        public void onProgressChanged (SeekBar seekBar,int i, boolean b){
-            // actualizar el textview de dias
-            // setear los dias en el plazo fijo
-            // actualizar el caluclo de los intereses pagados}
-        @Override
-        public void onStartTrackingTouch (SeekBar seekBar){
-            // no hacer nada
-        }
-        @Override
-        public void onStopTrackingTouch (SeekBar seekBar){
-            // no hacer nada
-        }
-
-
-    })
-    }
-
 }

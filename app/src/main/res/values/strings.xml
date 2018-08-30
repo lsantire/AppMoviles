@@ -12,4 +12,11 @@
     <string name="textoCheckBox">Aceptar terminos y condiciones</string>
     <string name="acreditar">ACREDITAR EN CUENTA</string>
     <string name="renovar">RENOVAR AUTOMATICAMENTE</string>
+    <string name="diasPF">" dias de plazo."</string>
+    <string name="toastTerminosCondiciones">Es obligatorio aceptar las condiciones</string>
+    <string name="toastPFInvalido">ERROR</string>
+    <string name="toastPFValido">EXITO</string>
+    <string name="mailIncompleto">"Mail incompleto\n"</string>
+    <string name="cuitIncompleto">"CUIT incompleto\n"</string>
+    <string name="montoIncorrecto">"Monto incorrecto\n"</string>
 </resources>

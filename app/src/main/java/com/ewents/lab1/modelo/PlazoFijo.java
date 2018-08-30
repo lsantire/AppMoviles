@@ -17,7 +17,7 @@ public class PlazoFijo {
         Log.d("Lab1", Arrays.toString(tasas));
         this.tasas=tasas;
         this.monto=0.0;
-        this.dias=0;
+        this.dias=10;
         this.avisarVencimiento=false;
         this.renovarAutomaticamente=false;
         this.moneda=Moneda.PESO;

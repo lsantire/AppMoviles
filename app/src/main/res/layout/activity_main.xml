@@ -1,143 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/tvCorreo"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mail" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editMail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
-
-    <TextView
-        android:id="@+id/tvCuit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/cuit" />
-
-    <EditText
-        android:id="@+id/editCuit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/tvMoneda"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/moneda" />
-
-    <RadioGroup
-        android:id="@+id/optMoneda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/optDolar"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/dolar" />
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/optPeso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/pesoArg" />
-    </RadioGroup>
+            <TextView
+                android:id="@+id/tvCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mail" />
 
-    <TextView
-        android:id="@+id/tvMonto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/montoInvertir" />
+            <EditText
+                android:id="@+id/editMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
 
-    <EditText
-        android:id="@+id/editMonto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
+            <TextView
+                android:id="@+id/tvCuit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cuit" />
 
-    <TextView
-        android:id="@+id/tvDias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dias" />
+            <EditText
+                android:id="@+id/editCuit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
 
-    <SeekBar
-        android:id="@+id/seekDias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:min="10"
-        android:max="180" />
+            <TextView
+                android:id="@+id/tvMoneda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/moneda" />
 
-    <TextView
-        android:id="@+id/tvDiasSeleccionados"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <RadioGroup
+                android:id="@+id/optMoneda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvIntereses"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/optDolar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dolar" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/optPeso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/pesoArg" />
+            </RadioGroup>
 
-        <TextView
-            android:id="@+id/tvAvisarVencimiento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/avisarVencimiento"
-            android:layout_marginRight="10dp"/>
+            <TextView
+                android:id="@+id/tvMonto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/montoInvertir" />
 
-        <Switch
-            android:id="@+id/swAvisarVencimiento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editMonto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
 
-    <ToggleButton
-        android:id="@+id/togAccion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textOn="@string/renovar"
-        android:textOff="@string/acreditar" />
+            <TextView
+                android:id="@+id/tvDias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dias" />
 
-    <CheckBox
-        android:id="@+id/chkAceptoTerminos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/textoCheckBox" />
+            <SeekBar
+                android:id="@+id/seekDias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="170" />
 
-    <Button
-        android:id="@+id/btnHacerPF"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/textoBoton" />
+            <TextView
+                android:id="@+id/tvDiasSeleccionados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tvMensaje"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:maxLines="6" />
+            <TextView
+                android:id="@+id/tvIntereses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvAvisarVencimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/avisarVencimiento" />
+
+                <Switch
+                    android:id="@+id/swAvisarVencimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <ToggleButton
+                android:id="@+id/togAccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textOff="@string/acreditar"
+                android:textOn="@string/renovar" />
+
+            <CheckBox
+                android:id="@+id/chkAceptoTerminos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textoCheckBox" />
+
+            <Button
+                android:id="@+id/btnHacerPF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textoBoton" />
+
+            <TextView
+                android:id="@+id/tvMensaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="6" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
