@@ -120,15 +120,15 @@ public class MainActivity extends AppCompatActivity {
                     errores+=getResources().getString(R.string.montoIncorrecto);
                 if(errores.isEmpty())
                 {
-                    toastBtnHacerPF.getView().setBackgroundColor(getResources().getColor(R.color.colorCorrecto,getTheme()));
                     toastBtnHacerPF = Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastPFValido),Toast.LENGTH_SHORT);
+                    toastBtnHacerPF.getView().setBackgroundColor(getResources().getColor(R.color.colorCorrecto,getTheme()));
                     tvMensaje.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                     tvMensaje.setText(pf.toString());
                 }
                 else
                 {
-                    toastBtnHacerPF.getView().setBackgroundColor(getResources().getColor(R.color.colorIncorrecto,getTheme()));
                     toastBtnHacerPF = Toast.makeText(getApplicationContext(),getResources().getString(R.string.toastPFInvalido),Toast.LENGTH_SHORT);
+                    toastBtnHacerPF.getView().setBackgroundColor(getResources().getColor(R.color.colorIncorrecto,getTheme()));
                     tvMensaje.setTextColor(getResources().getColor(R.color.colorIncorrecto));
                     tvMensaje.setText(errores);
                 }
