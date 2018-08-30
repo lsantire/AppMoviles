@@ -1,6 +1,5 @@
-package com.ewents.lab1.modelo;
+package com.ewents.lab1;
 
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.ewents.lab1.R;
 import com.ewents.lab1.modelo.Cliente;
 import com.ewents.lab1.modelo.PlazoFijo;
 
