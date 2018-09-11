@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editMail, editCuit, editMonto;
     private SeekBar seekDias;
     private Switch swAvisarVencimiento;
+    private RadioGroup optMoneda;
     private RadioButton optDolar, optPeso;
     private CheckBox chkAceptoTerminos;
     private Toast toastTerminosCondiciones,toastBtnHacerPF;
@@ -57,6 +59,68 @@ public class MainActivity extends AppCompatActivity {
         chkAceptoTerminos = (CheckBox) findViewById(R.id.chkAceptoTerminos);
         btnHacerPF.setEnabled(false);
 
+        editMail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                pf.setCorreoElectronico(s.toString());
+            }
+        });
+
+        editCuit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // no hacer nada
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // no hacer nada
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Acá habría que hacer algo con el cliente del PF.
+            }
+        });
+
+        //ACA VA LISTENER DE optMoneda
+
+        editMonto.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // no hacer nada
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // no hacer nada
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString().isEmpty()){
+                    pf.setMonto(0.0);
+                    tvDiasSeleccionados.setText("");
+                    tvIntereses.setText("");
+                }
+                else{
+                    pf.setMonto(Double.valueOf(s.toString()));
+                    tvDiasSeleccionados.setText(String.valueOf(pf.getDias()) + getResources().getString(R.string.diasPF));
+                    tvIntereses.setText(String.format("$%.2f", pf.intereses()));
+                }
+            }
+        });
+
         seekDias.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int cantDias, boolean b) {
@@ -78,24 +142,9 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        editMonto.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // no hacer nada
-            }
+        //ACA VA LISTENER DE swAvisarVencimiento
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // no hacer nada
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                pf.setMonto(Double.valueOf(s.toString()));
-                tvDiasSeleccionados.setText(String.valueOf(pf.getDias()) + getResources().getString(R.string.diasPF));
-                tvIntereses.setText(String.format("$%.2f", pf.intereses()));
-            }
-        });
+        //ACA VA LISTENER DE togAccion
 
         chkAceptoTerminos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

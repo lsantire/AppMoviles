@@ -11,6 +11,7 @@ public class PlazoFijo {
     private Moneda moneda;
     private String[] tasas;
     private Cliente cliente;
+    private String correoElectronico;
 
     public PlazoFijo(String[] tasas){
         Log.d("Lab1",tasas+"");
@@ -33,6 +34,7 @@ public class PlazoFijo {
                 ", moneda=" + moneda +
                 ", tasas=" + Arrays.toString(tasas) +
                 ", cliente=" + cliente +
+                ", correoElectronico=" + correoElectronico +
                 '}';
     }
 
@@ -61,6 +63,14 @@ public class PlazoFijo {
 
     public void setDias(Integer dias) {
         this.dias = dias;
+    }
+
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 
     public Double getMonto() {
